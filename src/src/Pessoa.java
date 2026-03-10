@@ -8,23 +8,25 @@ public class Pessoa {
 	private String nome;
 	private String telefone; 
 	private String email;
+	Endereco endereco;
 	
 	public Pessoa () {
-		this.codigo = 0;
-		this.cpf = 0;
-		this.nome = "";
-		this.telefone = "";
-		this.email = "";
-		
-	}//fim do construtor padrão[
+		this.setCodigo (0);
+		this.setCPF(0);
+		this.setNome  ("");
+		this.setTelefone("");
+		this.setEmail ("");
+		this.setEndereco  (new Endereco());//Chamando construtor vazio - com valores padrões 
+	}//fim do construtor padrão
 	
 	//2º Máxima da O.O = Sopbrecarga
-	public Pessoa(int codigo, long cpf, String nome, String telefone, String email) {
-		this.codigo = codigo;
-		this.cpf = cpf;
-		this.nome = nome;
-		this.telefone = telefone;
-		this.email = email;
+	public Pessoa(int codigo, long cpf, String nome, String telefone, String email, Endereco endereco) {
+		this.setCodigo (codigo);
+		this.setCPF (cpf);
+		this.setNome (nome);
+		this.setTelefone (telefone);
+		this.setEmail  (email);
+		this.setEndereco (endereco);//Logradouro, numero, bairro, cidade, estado, UF, CEP
 	}//fim do construtor pessoa
 	
 	//Métodos modificadores
@@ -44,28 +46,39 @@ public class Pessoa {
 		return this.email;
 	}//fim do getEmail
 	
-	public void setCodigo() {
+	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}// fim do setCodigo
-	public void setCPF() {
+	public void setCPF(long cpf) {
 		this.cpf = cpf;
 	}//fim do setCPF
-	public void setNome(){
+	public void setNome(String nome){
 		this.nome = nome;
 	}//fim do setNome
-	public void setTelefone() {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}// fim do setTelefone
-	public void setEmail() {
+	public void setEmail(String email) {
 		this.email = email;
 	}//fim do setEmail
+	
+	public Endereco getEndereco() {
+		return this.endereco;
+	}//fim do getEndereco
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}//fim do setEndereco 
 	
 	public String imprimir() {
 		return "Codigo: " 		+ getCodigo() 	+
 				"\nCPF: " 		+ getCPF() 		+
 				"\nNome: " 		+ getNome()		+
 				"\nTelefone: " 	+ getTelefone() +
-				"\nEmail: " 	+ getEmail();
+				"\nEmail: " 	+ getEmail()    +
+				"\nDados Endereço: " 			+ this.endereco.imprimir();
 	}//fim do imprimir
+	
+
+	
 	
 }//fim da classe
